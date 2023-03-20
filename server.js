@@ -1,15 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Student = require("./models/student");
+const Student = require("./models/Student");
 
-const app = express();
+const server = express();
 const dbUri =
   "mongodb+srv://Eddy:14771456@softwarevalidationdb.zxvb1ng.mongodb.net/?retryWrites=true&w=majority";
 
-app.listen(3000, () => {
+server.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
-app.use(express.json());
+server.use(express.json());
 
 (async () => {
   try {
@@ -23,10 +23,8 @@ app.use(express.json());
   }
 })();
 
-// Routes
-
 //Get all students
-app.get("/Student", async (req, res) => {
+server.get("/Student", async (req, res) => {
   try {
     const students = await Student.find({});
     res.status(200).json(students);
@@ -36,7 +34,7 @@ app.get("/Student", async (req, res) => {
 });
 
 // Get one student by id
-app.get("/Student/:id", async (req, res) => {
+server.get("/Student/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const student = await Student.findById(id);
@@ -47,7 +45,7 @@ app.get("/Student/:id", async (req, res) => {
 });
 
 // Create a new student
-app.post("/Student", async (req, res) => {
+server.post("/Student", async (req, res) => {
   try {
     const student = await Student.create(req.body);
     res.status(200).json(student);
@@ -57,7 +55,7 @@ app.post("/Student", async (req, res) => {
 });
 
 // Update a student by id
-app.put("/Student/:id", async (req, res) => {
+server.put("/Student/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const student = await Student.findByIdAndUpdate(id, req.body);
@@ -69,7 +67,7 @@ app.put("/Student/:id", async (req, res) => {
 });
 
 // Delete a student by id
-app.delete("/Student/:id", async (req, res) => {
+server.delete("/Student/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const student = await Student.findByIdAndDelete(id);
@@ -78,3 +76,5 @@ app.delete("/Student/:id", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+module.exports = server;
