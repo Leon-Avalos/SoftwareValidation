@@ -78,7 +78,7 @@ describe("DELETE /Student", () => {
 });
 
 
-// Test 2 - Get Student name
+// Test 9 - Get Student name
 describe('GET /Student', () => {
   test('should return a student called John Doe when find by id', async () => {
     const student_id = "64193e7f048b526d72240ff8"
