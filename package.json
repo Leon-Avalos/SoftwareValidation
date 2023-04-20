@@ -4,7 +4,7 @@
   "description": "Node student Crud",
   "main": "server.js",
   "scripts": {
-    "test": "jest --runInBand --detectOpenHandlest",
+  "test": "jest --watch --runInBand --detectOpenHandles",
     "serve": "node server.js",
     "dev": "nodemon server.js"
   },
