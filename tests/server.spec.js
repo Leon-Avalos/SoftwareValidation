@@ -6,7 +6,7 @@ describe("GET /Student", () => {
   test("should return 200 OK", async () => {
     const response = await request(server).get("/Student").send();
     expect(response.status).toBe(200);
-    done();
+   
   });
 });
 
@@ -15,7 +15,7 @@ describe("GET /Student", () => {
   test("should return JSON", async () => {
     const response = await request(server).get("/Student").send();
     expect(response.type).toBe("application/json");
-    done();
+   
   });
 });
 
@@ -26,7 +26,7 @@ describe("POST /Student", () => {
       .post("/Student")
       .send({ name: "John Doe", age: 25, email: "eddy@gmail.com" });
     expect(response.status).toBe(200);
-    done();
+   
   });
 });
 
@@ -37,7 +37,7 @@ describe("POST /Student", () => {
       .post("/Student")
       .send({ name: "John Doe", age: 25, email: "eddy@gmail.com" });
     expect(response.type).toBe("application/json");
-    done();
+   
   });
 });
 
@@ -48,7 +48,7 @@ describe("PUT /Student", () => {
       .put("/Student/6418943aeca8383d4f816917")
       .send({ name: "John Doe" });
     expect(response.status).toBe(200);
-    done();
+   
   });
 });
 
@@ -59,7 +59,7 @@ describe("PUT /Student", () => {
       .put("/Student/6418943aeca8383d4f816917")
       .send({ name: "John Doe" });
     expect(response.type).toBe("application/json");
-    done();
+   
   });
 });
 
@@ -70,7 +70,7 @@ describe("DELETE /Student", () => {
       .delete("/Student/6418943aeca8383d4f816917")
       .send();
     expect(response.status).toBe(200);
-    done();
+   
   });
 });
 
@@ -81,7 +81,7 @@ describe("DELETE /Student", () => {
       .delete("/Student/6418943aeca8383d4f816917")
       .send();
     expect(response.type).toBe("application/json");
-    done();
+   
   });
 });
 
@@ -93,6 +93,6 @@ describe('GET /Student', () => {
     const student_name = "John Doe"
     const response = await request(server).get(`/Student/${student_id}`).send()
     expect(response.body.name).toBe(student_name);
-    done();
+   
   });
 });
