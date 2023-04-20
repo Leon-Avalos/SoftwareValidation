@@ -4,7 +4,7 @@
   "description": "Node student Crud",
   "main": "server.js",
   "scripts": {
-    "test": "jest --forceExit",
+    "test": "jest --runInBand --detectOpenHandlest",
     "serve": "node server.js",
     "dev": "nodemon server.js"
   },
