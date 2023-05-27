@@ -1,47 +1,30 @@
-name: Docker Image CI (create and push to DockerHub)
+name: Docker Publish
 
 on:
   push:
-    branches: 'master'
-  # push:
-  #   branches: [ "master" ]
-  # pull_request:
-  #   branches: [ "master" ]
+    branches:
+      - Students_crud
+  pull_request:
+    branches:
+      - Students_crud
 
 jobs:
-  build: 
-
+  build-and-publish:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image to test if passes 
-      run: docker build . --file Dockerfile --tag crud-students:$(date +%s)
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-  publish:
-    runs-on: ubuntu-latest
-    enviroment:
-      name: api
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    steps: 
-    - 
-      name: SetUp QEMU 
-      uses: docker/setup-qemu-action@v2
-    - 
-      name: Set Up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-
-    - 
-      name: Login to DockerHub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - 
-      name: Build and Push to DH
-      uses: docker/build-push-action@v3
-      with:
-        context: .
-        push: true
-        tags: leo/crud-students:$(date +%s)
-
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .  # Replace with the path to your Dockerfile if different
+          push: true
+          tags: leo/students-crud:${{ github.sha }}
