@@ -18,4 +18,8 @@ Se ejecutaran los tests declarados en tests/server.spec
 npm run test
 ``` 
 
+### Como ejecutar en Docker
+```bash
+docker run -p 3000:3000 crud-exercise:lates
+``` 
 
