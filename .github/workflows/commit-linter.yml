@@ -1,30 +1,17 @@
-name: Conventional Commit Check
+name: Conventional Commits
 
 on:
   pull_request:
-    branches:
-      - Students_crud
+    branches: [ Students_crud ]
 
 jobs:
   build:
+    name: Conventional Commits
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Install Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run commitlint
-        run: npx commitlint --from=HEAD~1
-
-      #- name: Run conventional-changelog action
-      #  uses: "hacktons/ConventionalChangelog@v1.3.0"
-      #  with:
-      #    token: ${{ secrets.LINTER_TOKEN }}
+      - uses: webiny/action-conventional-commits@v1.1.0
+        # optional, required for private repos
+        # with:
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
