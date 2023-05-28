@@ -27,4 +27,4 @@ jobs:
         with:
           context: .  # Replace with the path to your Dockerfile if different
           push: true
-          tags: leoavalo/students-crud:${{ github.sha }}
+          tags: leoavalos/students-crud:${{ github.sha }}
