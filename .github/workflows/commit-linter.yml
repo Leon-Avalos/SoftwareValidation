@@ -27,4 +27,4 @@ jobs:
       - name: Run conventional-changelog action
         uses: "hacktons/ConventionalChangelog@v1.3.0"
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.LINTER_TOKEN }}
