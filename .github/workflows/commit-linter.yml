@@ -24,7 +24,7 @@ jobs:
       - name: Run commitlint
         run: npx commitlint --from=HEAD~1
 
-      - name: Run conventional-changelog action
-        uses: "hacktons/ConventionalChangelog@v1.3.0"
-        with:
-          token: ${{ secrets.LINTER_TOKEN }}
+      #- name: Run conventional-changelog action
+      #  uses: "hacktons/ConventionalChangelog@v1.3.0"
+      #  with:
+      #    token: ${{ secrets.LINTER_TOKEN }}
